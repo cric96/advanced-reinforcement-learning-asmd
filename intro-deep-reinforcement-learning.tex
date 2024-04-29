@@ -15,6 +15,7 @@
 \usepackage[minted,most]{tcolorbox}
 \usepackage{centernot}
 \usepackage{fontawesome}
+\usepackage{tasks}
 \usepackage{fancyvrb}
 \usepackage{minted}
 \usepackage{hyperref}
@@ -35,11 +36,11 @@
 
 \addbibresource{biblio.bib}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title[Deep Reinforcement Learning: Intro]
-{Deep Reinforcement Learning}
+\title[Advanced Topics in Reinforcement Learning]
+{Advanced Topics in Reinforcement Learning}
 %
-\subtitle[Introduction and Hands-on in Simple Environments]
-{Introduction and Hands-on in Simple Environments}
+\subtitle[Deep Learning and Multi Agent Systems]
+{Deep Learning and Multi Agent Systems}
 %
 \author[\sspeaker{Aguzzi}]
 {\speaker{Gianluca Aguzzi} \href{mailto:gianluca.aguzzi@unibo.it}{gianluca.aguzzi@unibo.it}}
@@ -47,7 +48,7 @@
 \institute[DISI, Univ.\ Bologna]
 {Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\
 \textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna \\[0.5cm]
-\textbf{Talk @} \bold{Fondamenti di Intellingenza Artificiale}}
+\textbf{Talk @} \bold{Advanced Software Modelling and Design}}
 %
 \renewcommand{\dateseparator}{/}
 \date[\today]{\today}
@@ -74,77 +75,34 @@
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%/////////
-\frame{\titlepage}
-%/////////
-\begin{frame}{Me}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-		\centering
-		\fbox{\includegraphics[width=0.5\linewidth]{img/me.jpeg}}
-		\\
-		\vspace{0.2cm}
-		\href{https://github.com/cric96}{\faGithub} \,
-		\href{https://stackoverflow.com/users/10295847/gianluca-aguzzi}{\faStackOverflow} \,
-		\href{https://www.linkedin.com/in/gianluca-aguzzi-265998170/}{\faLinkedin} \,
-		\href{https://www.unibo.it/sitoweb/gianluca.aguzzi}{\faGlobe} \,
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item PhD student in Computer Science and Engineering
-				\item Research interests:
-				\begin{itemize}
-					\item Multi-agent systems
-					\item Distributed Collective Intellingence
-					\item Deep Reinforcement Learning
-					\item Multi-agent Reinforcement Learning
-					\item Distributed Macro-programming
-				\end{itemize}
-				\item Lead developer of \href{https://scafi.github.io/}{ScaFi}
-				\item Scala Lover \& Functional Programming enthusiast
-			\end{itemize}
-		\end{column}
-	\end{columns}
-\end{frame}
+
 %===============================================================================
 \section{Introduction}
-%===============================================================================
-\begin{frame}{Road to \bold{Deep} Reinforcement Learning}
-	\begin{block}{Overview}
-		\begin{itemize}
-		\item \textbf{Reinforcement Learning (RL)} \faArrowRight \, learning how to act in order to maximize a numerical reward signal
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item \textbf{Reinforcement Learning (RL)} a subfield of machine learning that focuses on learning how to act in order to maximize a numerical reward signal
+		\item Someone argues~\cite{SILVER2021103535} that reward maximization is the \textbf{sole} principle that suffices to explain all aspects of intelligent behavior
 		\item Key features:
 		\begin{itemize}
 			\item \textbf{trial-and-error search} (no supervisor)
 			\item \textbf{delayed reward} (no immediate feedback)
+			\item \textbf{sequential decision-making} (the current decision affects the future decisions)
 		\end{itemize}
-		\item Someone argue(~\cite{SILVER2021103535}) that reward maximization is the sole principle that suffices to explain all aspects of intelligent behavior
-	\end{itemize}
-	\end{block}
-	\begin{block}{Application}
-		\begin{multicols}{2}
+		\item \textbf{Today lesson}
 		\begin{itemize}
-			\item Robotics
-			\item Game playing
-			\item Resource management
-			\item Finance
-			\item Chatbots
-			\item Intelligent transportation systems
+			\item Scale to more complex problems \faArrowRight \, \textbf{Deep Reinforcement Learning}
+			\item Scale to multi-agent systems \faArrowRight \, \textbf{Multi-Agent Reinforcement Learning}
 		\end{itemize}
-		\end{multicols}
-	\end{block}
-
-	\begin{alertblock}{Question}
-		\centering
-		\textbf{Can standard RL (e.q., Q-Learning) solve these complex problems?}		
-	\end{alertblock}
+	\end{itemize}
 \end{frame}
+\section{Deep Reinforcement Learning}
+%===============================================================================
 %\subsection{Reinforcement Learning Pitfalls}
-\begin{frame}{Reinforcement Learning Pitfalls: Large state space}
+\begin{frame}{\textbf{Road to deep}: Large state space}
 \begin{block}{Problem}
 	\begin{itemize}
-		\item \textbf{State space} \faArrowRight \, set of all possible states
-		\item \textbf{State space explosion} \faArrowRight \, the number of states is too large to be stored in memory
+		\item \textbf{State-space} \faArrowRight \, set of all possible states
+		\item \textbf{State-space explosion} \faArrowRight \, the number of states is too large to be stored in memory
 	\end{itemize}
 \end{block}
 \begin{columns}
@@ -176,7 +134,7 @@
 \end{alertblock}
 \end{frame}
 
-\begin{frame}{Reinforcement Learning Pitfalls: Continous Action Space}
+\begin{frame}{Road to \textbf{Deep}: Continous Action Space}
 	\begin{block}{Problem}
 		\begin{itemize}
 			\item \textbf{Action space} \faArrowRight \, set of all possible actions
@@ -203,7 +161,7 @@
 		\textbf{How to deal with continous action space?}
 	\end{alertblock}
 \end{frame}
-\begin{frame}{Reinforcement Learning Pitfalls: Generalization}
+\begin{frame}{Road to \textbf{Deep}: Generalization}
 \begin{block}{Problem}
 	\begin{itemize}
 		\item \textbf{Generalization} \faArrowRight \, the ability to perform well on previously unseen environments
@@ -267,7 +225,6 @@
 \end{columns}
 
 \end{frame}
-\section{Deep Q-Learning}
 \begin{frame}{Deep Q-Learning}
 	\centering
 	\textbf{Q-Learning but q-function is approximated by a neural network}
@@ -402,266 +359,199 @@
 			\item \textbf{Raindow DQN} \faArrowRight \, combination of the previous extensions
 		\end{itemize}
 	\end{block}
+\end{frame}
+\section{Multi-Agent Reinforcement Learning}
 
-\end{frame}
-\section{Hands-On in Python}
-\begin{frame}{Deep Reinforcement Learning in Python}
-\begin{block}{Components Required}
-	\begin{itemize}
-		\item \textbf{Environment} \faArrowRight \, the environment in which the agent operates (also called \textit{gym})
-		\item \textbf{Neural Network} \faArrowRight \, the neural network used to approximate the Q-function
-		\item \textbf{Learning Agent} \faArrowRight \, the agent that learns the optimal policy
-	\end{itemize}
-\end{block}
-\begin{block}{Reference Libraries}
-	\begin{itemize}
-		\item \textbf{OpenAI Gym} \url{https://gymnasium.farama.org/content/basic_usage/} \faArrowRight for the environment definition
-		\item \textbf{PyTorch} \url{https://pytorch.org/} \faArrowRight for the neural network definition
-		\item \textbf{Stable Baselines}  \url{https://stable-baselines.readthedocs.io/en/master/} \faArrowRight for the DRL algorithms
-	\end{itemize}
-\end{block}
-\begin{exampleblock}{Code repository}
-\url{https://github.com/cric96/intro-deep-reinforcement-learning-python}
-\end{exampleblock}
-\end{frame}
-\begin{frame}{OpenAI Gym}
-	\centering
-	\includegraphics[width=0.4\textwidth]{img/gym}
-	\begin{block}{What}
-		\begin{itemize}
-			\item OpenAI Gym is a toolkit for developing and comparing RL algorithms
-			\item It supports teaching agents everything from walking to playing games
-			\item It provides a diverse suite of environments that range from easy to difficult and involve many different kinds of data
-		\end{itemize}
-	\end{block}
-	\begin{block}{Why}
-		\begin{itemize}
-			\item \textbf{Standardized} \faArrowRight \, the environments are standardized \faArrowRight \, algorithms can be compared
-			\item \textbf{Easy} \faArrowRight \, the environments are easy to use, so that the focus is on the algorithms
-			\item \textbf{Flexible} \faArrowRight \, the environments are flexible, so that new environments can be added
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}[fragile, allowframebreaks]{OpenAI Gym}
-\begin{block}{Main Concepts}
-	\begin{itemize}
-		\item \texttt{Env} is a Python class with the following methods:
-		\begin{itemize}
-			\item \texttt{reset()} \faArrowRight \, reset the environment and return the initial state
-			\item \texttt{step(action)} \faArrowRight \, execute the \textbf{action} and return the next state, the \textbf{reward} and a boolean flag indicating if the episode is terminated
-			\item \texttt{render()} \faArrowRight \, render the environment
-			\item \texttt{close()} \faArrowRight \, close the environment
-			\item \texttt{action\_space} \faArrowRight \, the action space (i.e. the set of possible actions)
-			\item \texttt{observation\_space} \faArrowRight \, the observation space (i.e., the set of possible observations)
-		\end{itemize}
-		\item \texttt{Env} is a \textbf{black box} \faArrowRight \, the agent can only interact with it through the methods
+\begin{frame}[c]{Multi-Agent Reinforcement Learning (MARL)}
+	%/////////
 	
+	\begin{exampleblock}{Definition}
+		\emph{Multiple} agents \textbf{learn} to take the \emph{right} actions (\textbf{policy}) to maximise a \emph{reward} signal.
+	\end{exampleblock}
+	
+	\begin{alertblock}{Applications}
+		\begin{tasks}(2)
+			\task Videogames
+			\task Trafic Control
+			\task Robotics (\emph{Swarm robotics})
+			\task Trading
+			\task Energy Management
+			\task Environmental Monitoring
+		\end{tasks}
+	\end{alertblock}
+	\begin{exampleblock}{Today Outline}
+		\begin{itemize}
+			\item MARL abstractions
+			\begin{itemize}
+				\item[\faArrowRight] From MDP to Stochastic game
+			\end{itemize}
+			\item MARL classification
+			\begin{itemize}
+				\item[\faArrowRight] Cooperative vs. Competitive agents
+				\item[\faArrowRight] Centralised vs Decentralised learning and acting
+				\item[\faArrowRight] Homogeneous vs Heterogeneous agents
+			\end{itemize}
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+\begin{frame}{Motivating Example}
+	\centering
+	\begin{exampleblock}{OpenAI Hide And Seek: \url{https://openai.com/blog/emergent-tool-use/}}
+		\begin{figure}
+			\href{https://www.youtube.com/watch?v=kopoLzvh5jY}{\includegraphics[width=\textwidth]{img/open-ai.jpg}}
+		\end{figure}
+	\end{exampleblock}
+\end{frame}
+\begin{frame}[c]{Stochastic Game $\mathcal{S}$ (or Markov games)}
+	%/////////
+	\begin{alertblock}{Definition}
+		\begin{itemize}
+			\item $\mathcal{S}$ is a tuple $<N, S, \{A^i\}_{i \in \{ 1, \dots, N\}}, P, \{R^i\}_{i \in \{ 1, \dots, N\}}>$
+			\item $N$ is the number of agents ($|N| > 1 $)
+			\item $S$ is the global environment state
+			\item $A^i$ is the action state of agent $i$. $\mathbb{A} := A^1 \times \dots\times A^N$ is the joint action space
+			\item $P: S x \mathbb{A} \rightarrow \mathcal{P}(S)$ is the state transaction. $\mathcal{P}$ is a discrete probabilistic distribution %(associate for each $s \in S$ a probability)
+			\item $R^i: S \times \mathbb{A} \times S \rightarrow \mathbb{R}$ is the reward signal
+			\item Typical time evolution: $ S_0, \mathbb{A}_0, \mathbb{R}_1, S_1, \dots  $
+		\end{itemize}
+	\end{alertblock}
+	\begin{exampleblock}{Paper Rock Scissor (Repeated)}
+		\begin{tasks}(2)
+			\task $N = 2$
+			\task $A^1 = A^2 = $ \{Paper, Rock, Scissor\}
+			\task $S = \{ \mathbb{A}_{t-1} \} $
+			\task $R = \begin{blockarray}{cccc}
+        & Rock & Paper & Scissor \\
+      \begin{block}{c[ccc]}
+        Rock    & 0, 0  & -1, 1 & 1, -1 \\
+        Paper   & 1, -1 & 0, 0  & -1, 1 \\
+        Scissor & -1, 1 & 1, -1 & 0, 0 \\
+      \end{block}
+    \end{blockarray}$
+		\end{tasks}
+	\end{exampleblock}
+\end{frame}
+\begin{frame}[allowframebreaks]{Learning in Multi Agent Environment / Stochastic Games}
+\begin{exampleblock}{Task type}
+	\begin{itemize}
+		\item \textbf{Cooperative}
+		\begin{itemize}
+			\item Agents share the same reward function ($R^1 = R^2 = \dots = R^N$) or the same collective goal
+			\item Examples: multi-agent pathfinding, multi-agent resource allocation, multi-agent task allocation, \dots
+		\end{itemize}
+		\item \textbf{Competitive}
+		\begin{itemize}
+			\item Agents compete with each other to maximise a long-term return
+			\item Examples: Boards games, battle games, \dots
+		\end{itemize}
 	\end{itemize}
-\end{block}
-\begin{block}{Typical usage}
-\begin{minted}{python}
-import gym
-env = gym.make('your-env')
-env.reset()
-for _ in range(episodes):
-	env.render()
-	env.step(env.action_space.sample())
-env.close()
-\end{minted}
-\end{block}
-\begin{block}{Environment Definition}
-\begin{minted}{python}
-
-class MyEnv(gym.Env):
-	metadata = {'render.modes': ['human']}
-	def __init__(self):
-		## Init observation, action spaces
-	def step(self, action):
-		# Execute one time step within the environment, 
-		# return observation, reward, done, info
-		...
-	def reset(self):
-		# Reset the state of the environment to an initial state
-		...
-	def render(self, mode='human', close=False):
-		# Render the environment to the screen
-		...
-	\end{minted}
-
-\end{block}
-
-\end{frame}
-
-\begin{frame}{PyTorch}
-	%\centering
-	%\includegraphics[width=0.4\textwidth]{img/pytorch}
-	\begin{block}{What}
+\end{exampleblock}
+%%%%
+\begin{exampleblock}{Policy Type}
+\begin{itemize}
+	\item \textbf{Homogeneous}
+	\begin{itemize}
+		\item Each agent has the same action space ($ A^1 = A^2 = .. A ^N$) and use the \textbf{same} policy ($ \pi^0 = \pi^N$)
+		\item Used in \emph{cooperative} settings and with many agent interactions (e.g., swarm robotics)
 		\begin{itemize}
-			\item PyTorch is an open source machine learning framework
-			\item It provides a flexible and efficient library for deep learning
-			\item It provides a seamless path from research prototyping to production deployment
+			\item Complexity emerges from interactions
 		\end{itemize}
-	\end{block}
-	\begin{block}{Why}
-		\begin{itemize}
-			\item \textbf{Pythonic} \faArrowRight \, the code is Pythonic \faArrowRight \, it is easy to use
-			\item \textbf{Dynamic} \faArrowRight \, the code is dynamic \faArrowRight \, it is easy to debug
-			\item \textbf{Fast} \faArrowRight \, the code is fast \faArrowRight \, it is easy to scale
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}{PyTorch -- Super-fast overview}
-	\begin{block}{Tensors}
-		\begin{itemize}
-			\item \texttt{torch.Tensor} is the central class of the package
-			\item \texttt{torch.Tensor} is a multi-dimensional matrix containing elements of a single data type
-			\item \texttt{torch.Tensor} provides a lot of methods for manipulating the data
-		\end{itemize}
-	\end{block}
-	\begin{block}{Autograd}
-		\begin{itemize}
-			\item \texttt{torch.autograd} is a package for automatic differentiation
-			\item \texttt{torch.autograd} uses a tape-based system for automatic differentiation
-		\end{itemize}
-	\end{block}
-	\begin{block}{Neural Networks}
-		\begin{itemize}
-			\item \texttt{torch.nn} is a package for building neural networks
-			\item \texttt{torch.nn} provides classes and functions implementing neural networks
-			\item \texttt{torch.nn} provides a lot of modules for building neural networks
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}[fragile]{PyTorch -- API Usage}
-\begin{multicols}{2}
-\begin{minted}{python3}
-## Main imports
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
+		\item Examples (swarm robotics): obstacle avoidance, flocking, team formation, \dots
+	\end{itemize}
+	\item \textbf{Heterogeneous}
+	\begin{itemize}
+		\item Each agent has a different action space ($ A^1 \neq A^2 \neq .. A ^N$) and use a \textbf{different} policy ($ \pi^0 \neq \pi^N$)
+	\end{itemize}
+\end{itemize}
+\end{exampleblock}
+%%%%
+\begin{exampleblock}{Communication constraints}
+\begin{itemize}
+	\item \textbf{Independent}
+	\begin{itemize}
+		\item The policy of each agent is independent of the policy of the other agents
+		\item Cooperation could emerge through environment dynamics (but is hard)
+	\end{itemize}
+	\item \textbf{Joint Action}
+	\begin{itemize}
+		\item The policy of each agent depends on the action of the other agents ($ \pi(s_t, a^{-i}_t)^i $, where $-i$ means the other agents' indices)
+		\item Cooperation is explicitly encoded in the policy
+		\item Action space exponentially increases with the agent population
+	\end{itemize}
+\end{itemize}
+\end{exampleblock}
+%%%%
+\begin{exampleblock}{Execution constraints}
+\begin{itemize}
+	\item \textbf{Centralised}
+	\begin{itemize}
+		\item A central controller is responsible for the execution of the policy
+		\item It has a global view of the environment and can coordinate the agents
+	\end{itemize}
+	\item \textbf{Decentralised}
+	\begin{itemize}
+		\item Each agent executes its own policy
+		\item They don't have a global view of the environment, but (potentially) they can communicate
+	\end{itemize}
+\end{itemize}
+\end{exampleblock}
+%%%%
+\begin{exampleblock}{Learning constraints}
+\begin{itemize}
+	\item \textbf{Centralised}
+	\begin{itemize}
+		\item A central agent is responsible for the learning process
+		\item It could produce centralised or decentralised policies
+	\end{itemize}
+	\item \textbf{Decentralised}
+	\begin{itemize}
+		\item Each agent has its own learning process
+		\item It mainly produces decentralised policies
+	\end{itemize}
+\end{itemize}
+\end{exampleblock}
 
-# Create a tensor
-x = torch.tensor(
-	[1, 2, 3], 
-	dtype=torch.float32
-)
-
-# Create a neural network
-class Net(nn.Module):
-	def __init__(self):
-		super(Net, self).__init__()
-		self.fc1 = nn.Linear(10, 20)
-		self.fc2 = nn.Linear(20, 10)
-	def forward(self, x):
-		x = F.relu(self.fc1(x))
-		x = self.fc2(x)
-		return x
-
-
-## Network initialization
-net = Net()
-
-# Create an optimizer
-optimizer = optim.SGD(
-	net.parameters(), 
-	lr=0.01, 
-	momentum=0.9
-)
-
-# Create a loss function
-criterion = nn.MSELoss()
-\end{minted}
-
-\begin{minted}{python}
-
-# Training loop
-for _ in range(epochs):
-	# Perform a forward pass
-	output = net(x)
-	# Zero the gradients
-	optimizer.zero_grad()
-	# Compute the loss
-	loss = criterion(output, target)
-	# Perform a backward pass
-	loss.backward()
-	# Update the weights
-	optimizer.step()
-
-\end{minted}
-\end{multicols}
-\end{frame}
-\begin{frame}{Stable Baselines 3}
-	\begin{block}{What}
-		\begin{itemize}
-			\item Stable Baselines 3 is a set of reliable implementations of reinforcement learning algorithms
-			\item Stable Baselines 3 is a fork of Stable Baselines 2
-			\item Stable Baselines 3 is based on PyTorch
-		\end{itemize}
-	\end{block}
-	\begin{block}{Why}
-		\begin{itemize}
-			\item State-of-the-art implementations of reinforcement learning algorithms
-			\item Tested and documented codebase
-			\item Easy to use, easy to extend
-		\end{itemize}
-	\end{block}
-	\begin{block}{Main concepts}
-		\begin{itemize}
-			\item \textbf{Policy} \faArrowRight \, the agent's behavior
-			\item \textbf{Environment} \faArrowRight \, the task to be solved
-			\item \textbf{Algorithm} \faArrowRight \, the algorithm to train the agent
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}{Stable Baselines 3 -- Usage Overview}
-	\begin{block}{Create an environment}
-		\begin{itemize}
-			\item \texttt{env = gym.make('CartPole-v1')}
-		\end{itemize}
-	\end{block}
-	\begin{block}{Create a policy}
-		\begin{itemize}
-			\item \texttt{policy = MlpPolicy(env.observation\_space, env.action\_space)}
-			\item \texttt{policy = CnnPolicy(env.observation\_space, env.action\_space)}
-		\end{itemize}
-	\end{block}
-	\begin{block}{Create an algorithm}
-		\begin{itemize}
-			\item \texttt{model = PPO(policy, env, verbose=1)}
-			\item \texttt{model = A2C("MlpPolicy", env, verbose=1)}
-			\item \texttt{model = DQN(policy, env, verbose=1)}
-		\end{itemize}
-	\end{block}
-	\begin{block}{Train the agent}
-		\begin{itemize}
-			\item \texttt{model.learn(total\_timesteps=10000)}
-		\end{itemize}
-	\end{block}
+\begin{alertblock}{Big Question: Can we use Single Agent RL in MAS?}
+\begin{itemize}
+	\item It depends on the \emph{task type}, \emph{policy type}, \emph{communication} constraints, \emph{execution} constraints, and \emph{learning} constraints
+	\item Single agent RL could be easily adapted in some cases:
+	\begin{itemize}
+		\item Task type: cooperative
+		\item Policy type: homogeneous
+		\item Communication constraints: independent
+		\item Execution constraints: centralised/decentralised
+		\item Learning constraints: centralised/decentralised
+	\end{itemize}
+	\item In other cases, they could fail easier
+\end{itemize}
+\end{alertblock}
 \end{frame}
 \section{Conclusion}
-\begin{frame}{Conclusion}
+\begin{frame}[shrink=5]{Conclusion}
 	\begin{block}{What we have learned}
 		\begin{itemize}
 			\item Deep Reinforcement Learning is a powerful tool for solving complex tasks
-			\item Deep Q Learning is a simple yet effective algorithm for solving reinforcement learning tasks
+			\item Multi-Agent Reinforcement Learning extends the capabilities of RL to multi-agent systems 
 		\end{itemize}
 	\end{block}
 	\begin{exampleblock}{Just a scratch on the surface}
 		\begin{itemize}
-			\item Deep Reinforcement Learning is a very active research field
-			\item There are a lot of algorithms and techniques to learn
-			\item There are a lot of interesting applications to explore
+			\item Both topics are vast and complex and they are still under active research
+			\item To genalist agents \faArrowRight \, fonduntionals model and GAI?
+			\item To large scale \faArrowRight \, many-agent RL?
 		\end{itemize}
 	\end{exampleblock}
 	\begin{block}{Resources}
 		\begin{itemize}
 			\item \citetitle*{10.5555/3312046}: intro to Reinforcement Learning (reference book)
-			\item \citetitle*{zai2020deep}: pratice-oriented book on Deep Reinforcement Learning
+			\item \citetitle*{zai2020deep}: practice oriented book on Deep Reinforcement Learning
 			\item \citetitle*{graesser2019foundations}: intro to Deep Reinforcement Learning
+			\item Multi-Agent Reinforcement Learning: \url{https://www.marl-book.com/}
 		\end{itemize}
 	\end{block}
 \end{frame}
+%/////////
+	
 %===============================================================================
 \section*{}
 %===============================================================================
