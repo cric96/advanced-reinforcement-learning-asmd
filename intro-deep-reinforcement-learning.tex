@@ -80,7 +80,7 @@
 \section{Introduction}
 \begin{frame}{Introduction}
 	\begin{itemize}
-		\item \textbf{Reinforcement Learning (RL)} a subfield of machine learning that focuses on learning how to act in order to maximize a numerical reward signal
+		\item \textbf{Reinforcement Learning (RL)} is a subfield of \emph{machine learning} that focuses on learning how to act in order to maximize a numerical reward signal
 		\item Someone argues~\cite{SILVER2021103535} that reward maximization is the \textbf{sole} principle that suffices to explain all aspects of intelligent behavior
 		\item Key features:
 		\begin{itemize}
@@ -130,7 +130,7 @@
 
 \begin{alertblock}{Question}
 	\centering
-	\textbf{How to deal with large state space?}
+	\textbf{How can we effectively handle large state spaces?}
 \end{alertblock}
 \end{frame}
 
@@ -158,18 +158,18 @@
 	
 	\begin{alertblock}{Question}
 		\centering
-		\textbf{How to deal with continous action space?}
+		\textbf{How can we effectively handle continuous action space?}
 	\end{alertblock}
 \end{frame}
 \begin{frame}{Road to \textbf{Deep}: Generalization}
 \begin{block}{Problem}
 	\begin{itemize}
-		\item \textbf{Generalization} \faArrowRight \, the ability to perform well on previously unseen environments
+		\item \textbf{Generalization} \faArrowRight \, the ability to perform well on unseen environments beyond the training set
 		\item Can be also seen as \textbf{transfer learning} \faArrowRight \, the ability to transfer knowledge from one environment to another
 		\item \textbf{Generalization gap} \faArrowRight \, the difference between the performance on the training environments and the performance on the test environments
 	\end{itemize}
 \end{block}
-\begin{block}{Example (Go) \, \href{}{\faLink}}
+\begin{block}{Example (Go)}
 	\begin{itemize}
 		\item \textbf{Generalization} \faArrowRight \, the ability to play well with different opponents
 		\item \textbf{Generalization gap} \faArrowRight \, the difference between the performance on the training set and the performance on the test set
@@ -193,9 +193,9 @@
 	
 	\begin{alertblock}{Key features}
 		\begin{itemize}
-			\item \textbf{value function approximation} (instead of table) \faArrowRight \, \textbf{handle large state space}
-			\item \textbf{policy gradient} (instead of Q-Learning) \faArrowRight \, \textbf{handle continous action space}
-			\item \textbf{deep neural networks} \faArrowRight \, \textbf{handle generalization} (Representation learning)
+			\item \textbf{Value function approximation} (instead of tables) \faArrowRight \, \textbf{handle large state space}
+			\item \textbf{Policy gradient} (instead of Q-Learning) \faArrowRight \, \textbf{handle continous action space}
+			\item \textbf{Deep neural networks} \faArrowRight \, \textbf{handle generalization} (Representation learning)
 		\end{itemize}
 	\end{alertblock}
 \end{frame}
@@ -208,14 +208,13 @@
 				\item \textbf{Example} \faArrowRight \, \emph{Deep Q-Learning}
 			\end{itemize}
 		\end{block}
-
 		\href{https://www.youtube.com/watch?v=V1eYniJ0Rnk}{\fbox{\includegraphics[height=3.5cm]{img/atari}}}
 	\end{column}
 
 	\begin{column}{0.45\textwidth}
 		\begin{block}{Policy-based}
 			\begin{itemize}
-				\item the agent learns the policy 
+				\item The agent learns \emph{directly} the policy 
 				\item \textbf{Example} \faArrowRight \, REINFORCE, PPO
 			\end{itemize}
 		\end{block}
@@ -225,9 +224,11 @@
 \end{columns}
 
 \end{frame}
-\begin{frame}{Deep Q-Learning}
+\begin{frame}{Deep Q-Learning -- in a nutshell}
 	\centering
-	\textbf{Q-Learning but q-function is approximated by a neural network}
+	\large{
+	\textbf{Q-Learning but the q-table is approximated by a neural network}
+	}
 	$$ Q(s, a, \theta) \sim Q(s, a) $$
 	\includegraphics[width=\textwidth]{img/dql-vs-ql-1.png}
 \end{frame}
@@ -290,7 +291,7 @@
 	\end{block}
 	\begin{alertblock}{Benefits}
 		\begin{itemize}
-			\item \textbf{Stable} \faArrowRight \, the target value is fixed for $C$ steps, avoiding the non-stationary issue (dipendece on target and prediction cause)
+			\item \textbf{Stable} \faArrowRight \, the target value is fixed for $C$ steps, avoiding the non-stationary issue (dependence on target and prediction cause)
 		\end{itemize}
 	\end{alertblock}
 \end{frame}
@@ -359,6 +360,13 @@
 			\item \textbf{Raindow DQN} \faArrowRight \, combination of the previous extensions
 		\end{itemize}
 	\end{block}
+\end{frame}
+\begin{frame}[plain]
+\begin{center}
+	\Huge{\textbf{Code!}}
+\end{center}
+\centering
+\small{\url{https://github.com/cric96/advanced-reinforcement-learning-asmd-code}}
 \end{frame}
 \section{Multi-Agent Reinforcement Learning}
 
@@ -546,7 +554,7 @@
 			\item \citetitle*{10.5555/3312046}: intro to Reinforcement Learning (reference book)
 			\item \citetitle*{zai2020deep}: practice oriented book on Deep Reinforcement Learning
 			\item \citetitle*{graesser2019foundations}: intro to Deep Reinforcement Learning
-			\item Multi-Agent Reinforcement Learning: \url{https://www.marl-book.com/}
+			\item \emph{Multi-Agent Reinforcement Learning}: \url{https://www.marl-book.com/}
 		\end{itemize}
 	\end{block}
 \end{frame}
